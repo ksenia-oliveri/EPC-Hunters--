@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кнопки</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            width: 100px;
+        }
+        .button-container button {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="button-container">
+        <button id="btn1">1</button>
+        <button id="btn2">2</button>
+        <button id="btn3">3</button>
+    </div>
+
+<script>
+    $(document).ready(function() {
+        // Массив для хранения кнопок в исходном порядке
+        let order = [1, 2, 3];
+
+        function updateButtons() {
+            // Присваиваем текст кнопкам в соответствии с текущим порядком в массиве
+            $('#btn1').text(order[0]);
+            $('#btn2').text(order[1]);
+            $('#btn3').text(order[2]);
+        }
+
+        // Обработчик события для каждой кнопки
+        $('.button-container button').click(function() {
+            // Меняем порядок кнопок по кругу
+            order.push(order.shift());
+            updateButtons();
+        });
+
+        // Инициализация начального порядка кнопок
+        updateButtons();
+    });
+</script>
+
+</body>
+</html>
